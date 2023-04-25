@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image to PDF Converter</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+</head>
+<body>
+	<header>
+		<h1>Image to PDF Converter</h1>
+	</header>
+
+	<form class="formclass" method="POST" action="{% url 'convert' %}" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="file" name="photo" id="photo" style="padding: 20px;font-size: 32px"><br><br>
+		<button type="submit" style="background-color: greenyellow; font-size: 32px">Конвертировать в PDF</button>
+		{% if tf == True %}
+		<h1>PDF READY</h1>
+		<p style="font-size: 28px">Open a PDF file <a href="{{pdf_url}}" target="_blank" >example</a>.</p>
+		{% endif %}
+	</form>
+</body>
+</html>
